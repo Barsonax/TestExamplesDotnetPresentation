@@ -27,17 +27,25 @@ enableTitleFooter: false
 
 ## Waarom (automatische) testen?
 
-- Snelle feedback.
-- Bugs voorkomen.
-- Test driven design.
+- Snelle feedback
+- Bugs voorkomen
+- Test driven design
+
+--
+
+## Waarom TestExamplesDotnet?
+
+- Testsuite met runtimes van > 1 uur
+- Flakyness
+- Dit kan beter
 
 --
 
 ## Unit/Integration testen
 
-- Verschil niet zo belangrijk.
-- Snelheid is belangrijk.
-- Betrouwebaarheid is belangrijk.
+- Verschil niet zo belangrijk
+- Snelheid is belangrijk
+- Betrouwebaarheid is belangrijk
 - Wat testen we nou echt?
 
 ---
@@ -45,17 +53,35 @@ enableTitleFooter: false
 ## Wat is TestExamplesDotnet?
 
 - Een repository met test voorbeelden
-- Weinig dependencies
-- Geen setup
+- Geen handmatige setup
 - Snelle feedback
+- Echte database ipv een mock
+
+--
+
+## Echte database, is dat niet langzaam?
+
+- Technische uitdaging ^
+
+--
+
+![](https://media.githubusercontent.com/media/Barsonax/TestExamplesDotnet/master/Media/2000testsin10sec.gif)
 
 ---
 
 ## Hoe werkt TestExamplesDotnet?
 
 - Testcontainers
+- Parallel
 - Database pooling
 - Respawn
+
+--
+
+
+<a>
+    <img height=600em data-src="https://media.githubusercontent.com/media/Barsonax/TestExamplesDotnet/bf2ca7e4c629d884829c60a3f50a7434c7a66b79/Media/ApiTestsFlowChart.drawio.svg">
+</a>
 
 ---
 
