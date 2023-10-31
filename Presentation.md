@@ -71,6 +71,7 @@ enableTitleFooter: false
 
 ## Hoe werkt TestExamplesDotnet?
 
+- WebApplicationFactory
 - Testcontainers
 - Parallel
 - Database pooling
