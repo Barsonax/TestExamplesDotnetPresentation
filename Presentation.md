@@ -3,17 +3,12 @@ theme: white
 transition: "slide"
 highlightTheme: "vs2015"
 slideNumber: true
-#logoImg: "https://github.com/Barsonax/nukepresentation/raw/master/images/nukeIcon.png"
 title: "Rock your tests!"
-enableTitleFooter: false
+enableTitleFooter: true
 customTheme : "my-theme"
 ---
 
 ## Rock your tests!
-
-<a>
-    <img style="border: unset; box-shadow: unset" data-src="https://github.com/Barsonax/nukepresentation/raw/master/images/nukeIcon.png">
-</a>
 
 ---
 
@@ -30,13 +25,14 @@ customTheme : "my-theme"
 
 - Snelle feedback
 - Bugs voorkomen
+- Documentatie
 - Test driven design
 
 --
 
 ## Test driven design
 
-Tests kunnen design issues zichtbaar maken 
+Tests kunnen design issues zichtbaar maken.
 
 <span class="fragment">
 
@@ -50,37 +46,79 @@ context.Reservations.Add(new Reservation
 
 </span>
 
-<span class="fragment"> Veel mocks? </span> <span class="fragment"> Verkeerde test scope </span> <span class="fragment"> of issue met de code? </span>
+<span class="fragment">Veel mocks? </span> <span class="fragment">Verkeerde test scope of..</span> <span class="fragment"> issue met de code? </span>
+
+--
+
+## Unit vs Integration testen
+
+ <span class="fragment">Verschil is niet zo belangrijk...</span> <span class="fragment"> maar wat wel?</span>
+
+ <span class="fragment">Snelheid</span>
+
+ <span class="fragment">Betrouwbaarheid</span>
+
+ <span class="fragment">Vetrouwen</span>
+
+--
+
+## Rock your unit
+
+<span class="fragment">Test de publieke interface</span>
+
+<span class="fragment">Focus op functionaliteiten</span>
+
+<span class="fragment">Denk vanuit een gebruiker van je code...</span> <span class="fragment">Dat ook jijzelf zijn!</span>
+
+<span class="fragment">Richtlijnen</span>
 
 --
 
 ## Waarom TestExamplesDotnet?
 
-- <span class="fragment">Testsuite met runtimes van > 1 uur</span>
-- <span class="fragment">Flakyness</span>
-- <span class="fragment">Welke functie testen we nou?</span>
-- <span class="fragment">Dit kan beter</span>
+<span class="fragment">Testsuite met runtimes van > 1 uur</span>
 
---
+<span class="fragment">Flakyness</span>
 
-## Unit/Integration testen
+<span class="fragment">Welke functie testen we nou?</span>
 
-- Verschil niet zo belangrijk
-- Snelheid is belangrijk
-- Betrouwbaarheid is belangrijk
-- Focus op wat testen we nou echt?
+<span class="fragment">Dit kan beter</span>
 
 ---
 
 ## Wat is TestExamplesDotnet?
 
-- Een repository met efficiente test setups
-- Geen handmatige setup
-- Snelle feedback
-- Echte database ipv een mock
-- Core dev feedback loop
+<https://github.com/Barsonax/TestExamplesDotnet>
+
+Een repository met efficiente test setups voor complexere testen
+
+<span class="fragment">Geen handmatige setup</span>
+
+<span class="fragment">Echte database ipv een mock</span>
+
+<span class="fragment">Core dev feedback loop</span>
 
 ---
+
+## Waarom geen in memory database?
+
+<span class="fragment">Ander gedrag dan een echte database</span>
+
+<span class="fragment">Geen constraints</span>
+
+<span class="fragment">Geen transacties</span>
+
+--
+
+## En repositories dan?
+
+<span class="fragment">Leaky abstraction</span>
+
+<span class="fragment">Kan niet 100% van functionaliteit testen</span>
+
+<span class="fragment">Entity framework is al een repository</span>
+
+--
 
 ## Ingredienten
 
@@ -88,35 +126,58 @@ context.Reservations.Add(new Reservation
 
 ## WebApplicationFactory
 
-- <https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests?view=aspnetcore-7.0>
-- Makkelijk je app draaien vanuit code
-- In memory testserver
-- Limitaties voor browser testen, daarover later meer
+<https://learn.microsoft.com/en-us/aspnet/core/test/integration-tests>
+
+<span class="fragment">Makkelijk je app draaien vanuit code</span>
+
+<span class="fragment">In memory testserver</span>
+
+<span class="fragment">Limitaties, daarover later meer</span>
 
 --
 
 ## Testcontainers?
 
-- <https://dotnet.testcontainers.org/>
-- Library om docker heen
-- Handig voor dependencies zoals databases
-- Zorgt voor cleanup, ook als je dit zelf vergeet
+<https://dotnet.testcontainers.org/>
+
+<span class="fragment">Library om docker heen</span>
+
+<span class="fragment">Containers starten en beheren vanuit C#</span>
+
+<span class="fragment">Zorgt voor cleanup, ook als je dit zelf vergeet</span>
+
+<span class="fragment">Handig voor dependencies zoals databases</span>
+
+<span class="fragment">
+
+```cs
+var container = new MsSqlBuilder().Build();
+await container.StartAsync();
+```
+
+</span>
 
 --
 
 ## Pooling
 
-- Migraties zijn duur
-- Hergebruik database is interessant
-- Test isolatie mag niet gebroken worden
+<https://www.nuget.org/packages/Microsoft.Extensions.ObjectPool>
+
+<span class="fragment">Migraties zijn duur</span>
+
+<span class="fragment">Test isolatie mag niet gebroken worden</span>
+
+<span class="fragment">Oplossing: </span><span class="fragment">ruim data op en hergebruik de database</span>
 
 --
 
 ## Respawn
 
-- <https://github.com/jbogard/Respawn>
-- Ruimt database snel op
-- Behoudt schema
+<https://github.com/jbogard/Respawn>
+
+<span class="fragment">Sneller dan drop/create of transacties</span>
+
+<span class="fragment">Geen limitaties in tests ten opzichte van transactions</span>
 
 --
 
@@ -146,3 +207,7 @@ context.Reservations.Add(new Reservation
 ---
 
 ## Vragen
+
+--
+
+<https://github.com/Barsonax/TestExamplesDotnetPresentation>
