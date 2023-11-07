@@ -1,15 +1,13 @@
 ---
-theme: white
 transition: "slide"
 highlightTheme: "vs2015"
 slideNumber: true
 title: "Rock your tests!"
-enableTitleFooter: true
-customTheme : "my-theme"
----
-
-## Rock your tests!
-
+css : "my-theme.css"
+format: revealjs
+chalkboard: true
+navigation-mode: vertical
+controls: true
 ---
 
 ## In deze presentatie
@@ -19,16 +17,12 @@ customTheme : "my-theme"
 - Hoe werkt TestExamplesDotnet
 - Vragen
 
----
-
-## Waarom (automatische) testen?
+# Waarom (automatische) testen?
 
 - Snelle feedback
 - Bugs voorkomen
 - Documentatie
 - Test driven design
-
---
 
 ## Test driven design
 
@@ -36,7 +30,7 @@ Tests kunnen design issues zichtbaar maken.
 
 <span class="fragment">
 
-```cs
+```{cs}
 context.Reservations.Add(new Reservation
 {
     UserName = "",
@@ -48,8 +42,6 @@ context.Reservations.Add(new Reservation
 
 <span class="fragment">Veel mocks? </span> <span class="fragment">Verkeerde test scope of..</span> <span class="fragment"> issue met de code? </span>
 
---
-
 ## Unit vs Integration testen
 
  <span class="fragment">Verschil is niet zo belangrijk...</span> <span class="fragment"> maar wat wel?</span>
@@ -59,8 +51,6 @@ context.Reservations.Add(new Reservation
  <span class="fragment">Betrouwbaarheid</span>
 
  <span class="fragment">Vetrouwen</span>
-
---
 
 ## Rock your unit
 
@@ -72,9 +62,7 @@ context.Reservations.Add(new Reservation
 
 <span class="fragment">Richtlijnen</span>
 
---
-
-## Waarom TestExamplesDotnet?
+# Waarom TestExamplesDotnet?
 
 <span class="fragment">Testsuite met runtimes van > 1 uur</span>
 
@@ -83,8 +71,6 @@ context.Reservations.Add(new Reservation
 <span class="fragment">Welke functie testen we nou?</span>
 
 <span class="fragment">Dit kan beter</span>
-
----
 
 ## Wat is TestExamplesDotnet?
 
@@ -98,8 +84,6 @@ Een repository met efficiente test setups voor complexere testen
 
 <span class="fragment">Core dev feedback loop</span>
 
----
-
 ## Waarom geen in memory database?
 
 <span class="fragment">Ander gedrag dan een echte database</span>
@@ -108,7 +92,6 @@ Een repository met efficiente test setups voor complexere testen
 
 <span class="fragment">Geen transacties</span>
 
---
 
 ## En repositories dan?
 
@@ -118,11 +101,7 @@ Een repository met efficiente test setups voor complexere testen
 
 <span class="fragment">Entity framework is al een repository</span>
 
---
-
-## Ingredienten
-
---
+# Ingredienten
 
 ## WebApplicationFactory
 
@@ -133,8 +112,6 @@ Een repository met efficiente test setups voor complexere testen
 <span class="fragment">In memory testserver</span>
 
 <span class="fragment">Limitaties, daarover later meer</span>
-
---
 
 ## Testcontainers?
 
@@ -157,8 +134,6 @@ await container.StartAsync();
 
 </span>
 
---
-
 ## Pooling
 
 <https://www.nuget.org/packages/Microsoft.Extensions.ObjectPool>
@@ -169,8 +144,6 @@ await container.StartAsync();
 
 <span class="fragment">Oplossing: </span><span class="fragment">ruim data op en hergebruik de database</span>
 
---
-
 ## Respawn
 
 <https://github.com/jbogard/Respawn>
@@ -179,35 +152,27 @@ await container.StartAsync();
 
 <span class="fragment">Geen limitaties in tests ten opzichte van transactions</span>
 
---
-
 ## Lifecycle
 
 <a>
     <img height=600em data-src="https://media.githubusercontent.com/media/Barsonax/TestExamplesDotnet/bf2ca7e4c629d884829c60a3f50a7434c7a66b79/Media/ApiTestsFlowChart.drawio.svg">
 </a>
 
---
+#
 
-![](https://media.githubusercontent.com/media/Barsonax/TestExamplesDotnet/master/Media/2000testsin10sec.gif)
+![](media/2000testsin10sec.gif)
 
----
-
-## En mijn frontend dan?
+# En mijn frontend dan?
 
 - Frontend mag geen blinde vlek zijn.
 - Niet ootb mogelijk met WebApplicationFactory
-
---
 
 ## Playwright
 
 - <https://playwright.dev/dotnet/>
 
----
+# Vragen
 
-## Vragen
-
---
+#
 
 <https://github.com/Barsonax/TestExamplesDotnetPresentation>
