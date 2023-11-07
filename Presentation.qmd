@@ -5,6 +5,7 @@ slideNumber: true
 title: "Rock your tests!"
 css : "my-theme.css"
 format: revealjs
+footer: <https://github.com/Barsonax/TestExamplesDotnetPresentation>
 chalkboard: true
 navigation-mode: vertical
 controls: true
