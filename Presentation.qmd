@@ -156,7 +156,7 @@ await container.StartAsync();
 ## Lifecycle
 
 <a>
-    <img height=600em data-src="https://media.githubusercontent.com/media/Barsonax/TestExamplesDotnet/bf2ca7e4c629d884829c60a3f50a7434c7a66b79/Media/ApiTestsFlowChart.drawio.svg">
+    <img height=600em data-src="media/ApiTestsFlowChart.drawio.svg">
 </a>
 
 #
