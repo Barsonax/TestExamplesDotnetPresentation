@@ -9,6 +9,7 @@ footer: <https://github.com/Barsonax/TestExamplesDotnetPresentation>
 chalkboard: true
 navigation-mode: vertical
 controls: true
+highlight-style: monokai
 ---
 
 ## In deze presentatie
@@ -30,10 +31,10 @@ controls: true
 Tests kunnen design issues zichtbaar maken.
 
 ::: {.fragment}
-```{cs}
+```cs
 context.Reservations.Add(new Reservation
 {
-    UserName = "",
+    UserName = "",  
     UserId = TestUser.NormalUser.Id
 });
 ```
@@ -124,7 +125,7 @@ Een repository met efficiente test setups
 <span class="fragment">Handig voor dependencies zoals databases</span>
 
 ::: {.fragment}
-```{cs}
+```cs
 var container = new MsSqlBuilder().Build();
 await container.StartAsync();
 ```
@@ -165,7 +166,7 @@ await container.StartAsync();
 <span class="fragment">Moderne end-to-end testing library</span>
 
 ::: {.fragment}
-```{cs}
+```cs
 await Page.GotoAsync("https://playwright.dev");
 
 // Expect a title "to contain" a substring.
@@ -196,7 +197,7 @@ await Expect(Page).ToHaveURLAsync(new Regex(".*intro"));
 <span class="fragment">Wel wat hacky code</span>
 
 ::: {.fragment}
-```{cs}
+```cs
 //WebApplicationFactory will crash if we dont actually return a testserver...
 var testHost = builder.Build();
 
