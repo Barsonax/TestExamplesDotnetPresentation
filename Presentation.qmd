@@ -29,8 +29,7 @@ controls: true
 
 Tests kunnen design issues zichtbaar maken.
 
-<span class="fragment">
-
+::: {.fragment}
 ```{cs}
 context.Reservations.Add(new Reservation
 {
@@ -38,8 +37,7 @@ context.Reservations.Add(new Reservation
     UserId = TestUser.NormalUser.Id
 });
 ```
-
-</span>
+:::
 
 <span class="fragment">Veel mocks? </span> <span class="fragment">Verkeerde test scope of..</span> <span class="fragment"> issue met de code? </span>
 
