@@ -57,7 +57,7 @@ context.Reservations.Add(new Reservation
 
 <span class="fragment">Focus op functionaliteiten</span>
 
-<span class="fragment">Denk vanuit een gebruiker van je code...</span> <span class="fragment">Dat ook jijzelf zijn!</span>
+<span class="fragment">Denk vanuit een gebruiker van je code...</span> <span class="fragment">dat ook jijzelf zijn!</span>
 
 <span class="fragment">Richtlijnen</span>
 
@@ -75,7 +75,7 @@ context.Reservations.Add(new Reservation
 
 <https://github.com/Barsonax/TestExamplesDotnet>
 
-Een repository met efficiente test setups voor complexere testen
+Een repository met efficiente test setups
 
 <span class="fragment">Geen handmatige setup</span>
 
@@ -90,7 +90,6 @@ Een repository met efficiente test setups voor complexere testen
 <span class="fragment">Geen constraints</span>
 
 <span class="fragment">Geen transacties</span>
-
 
 ## En repositories dan?
 
@@ -108,9 +107,9 @@ Een repository met efficiente test setups voor complexere testen
 
 <span class="fragment">Makkelijk je app draaien vanuit code</span>
 
-<span class="fragment">In memory testserver</span>
+<span class="fragment">Snelle startup</span>
 
-<span class="fragment">Limitaties, daarover later meer</span>
+<span class="fragment">In memory testserver..</span><span class="fragment"> met wat limitaties, daarover later meer</span>
 
 ## Testcontainers?
 
@@ -124,14 +123,12 @@ Een repository met efficiente test setups voor complexere testen
 
 <span class="fragment">Handig voor dependencies zoals databases</span>
 
-<span class="fragment">
-
-```cs
+::: {.fragment}
+```{cs}
 var container = new MsSqlBuilder().Build();
 await container.StartAsync();
 ```
-
-</span>
+:::
 
 ## Pooling
 
@@ -163,12 +160,61 @@ await container.StartAsync();
 
 # En mijn frontend dan?
 
-- Frontend mag geen blinde vlek zijn.
-- Niet ootb mogelijk met WebApplicationFactory
+<https://playwright.dev/dotnet/>
 
-## Playwright
+<span class="fragment">Moderne end-to-end testing library</span>
 
-- <https://playwright.dev/dotnet/>
+::: {.fragment}
+```{cs}
+await Page.GotoAsync("https://playwright.dev");
+
+// Expect a title "to contain" a substring.
+await Expect(Page).ToHaveTitleAsync(new Regex("Playwright"));
+
+// create a locator
+var getStarted = Page.GetByRole(AriaRole.Link, new() { Name = "Get started" });
+
+// Expect an attribute "to be strictly equal" to the value.
+await Expect(getStarted).ToHaveAttributeAsync("href", "/docs/intro");
+
+// Click the get started link.
+await getStarted.ClickAsync();
+
+// Expects the URL to contain intro.
+await Expect(Page).ToHaveURLAsync(new Regex(".*intro"));
+```
+:::
+
+## Limitaties TestServer
+
+<span class="fragment">WebApplicationFactory gebruikt TestServer</span>
+
+<span class="fragment">TestServer niet beschikbaar op een port</span>
+
+<span class="fragment">Oplossing: </span><span class="fragment">Kestrel</span>
+
+<span class="fragment">Wel wat hacky code</span>
+
+::: {.fragment}
+```{cs}
+//WebApplicationFactory will crash if we dont actually return a testserver...
+var testHost = builder.Build();
+
+//Actually configure kestrel
+builder.ConfigureWebHost(p => p.UseKestrel());
+
+_host = builder.Build();
+_host.Start();
+
+var server = _host.Services.GetRequiredService<IServer>();
+var addresses = server.Features.Get<IServerAddressesFeature>();
+ClientOptions.BaseAddress = addresses!.Addresses
+    .Select(p => new Uri(p))
+    .Last();
+
+testHost.Start();
+```
+:::
 
 # Vragen
 
