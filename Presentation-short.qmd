@@ -42,28 +42,6 @@ context.Reservations.Add(new Reservation
 
 <span class="fragment">Veel mocks? </span> <span class="fragment">Verkeerde test scope of..</span> <span class="fragment"> issue met de code? </span>
 
-## Unit vs Integration testen
-
- <span class="fragment">Verschil is niet zo belangrijk...</span> <span class="fragment"> maar wat wel?</span>
-
- <span class="fragment">Snelheid</span>
-
- <span class="fragment">Betrouwbaarheid</span>
-
- <span class="fragment">Vertrouwen</span>
-
- <span class="fragment">Use the right tool for the right job!</span>
-
-## Rock your unit
-
-<span class="fragment">Test de publieke interface</span>
-
-<span class="fragment">Focus op functionaliteiten</span>
-
-<span class="fragment">Denk vanuit een gebruiker van je code...</span> <span class="fragment">dat ook jijzelf zijn!</span>
-
-<span class="fragment">Richtlijnen, context is king</span>
-
 # Waarom TestExamplesDotnet?
 
 <span class="fragment">Testsuite met runtimes van > 1 uur</span>
@@ -89,22 +67,6 @@ Een repository met efficiente (integratie) test setups.
 <span class="fragment">Duidelijke context, elke test zet zijn eigen data op</span>
 
 <span class="fragment">Snelle dev feedback loop</span>
-
-## Waarom geen in memory database?
-
-<span class="fragment">Ander gedrag dan een echte database</span>
-
-<span class="fragment">Geen constraints</span>
-
-<span class="fragment">Geen transacties</span>
-
-## En de repository pattern dan?
-
-<span class="fragment">Leaky abstraction</span>
-
-<span class="fragment">Kan niet 100% van functionaliteit testen</span>
-
-<span class="fragment">Entity framework is al een repository</span>
 
 # Ingredienten
 
@@ -135,7 +97,7 @@ await container.StartAsync();
 
 <span class="fragment">Gebruikt dezelfde startup code als productie</span>
 
-<span class="fragment">In memory testserver..</span><span class="fragment"> met wat limitaties, daarover later meer</span>
+<span class="fragment">In memory testserver..</span><span class="fragment"> met wat limitaties</span>
 
 ## Pooling
 
@@ -164,64 +126,6 @@ await container.StartAsync();
 ---
 
 ![](media/2000testsin10sec.gif)
-
-# En mijn frontend dan?
-
-<https://playwright.dev/dotnet/>
-
-<span class="fragment">Moderne end-to-end testing library</span>
-
-::: {.fragment}
-```cs
-await Page.GotoAsync("https://playwright.dev");
-
-// Expect a title "to contain" a substring.
-await Expect(Page).ToHaveTitleAsync(new Regex("Playwright"));
-
-// create a locator
-var getStarted = Page.GetByRole(AriaRole.Link, new() { Name = "Get started" });
-
-// Expect an attribute "to be strictly equal" to the value.
-await Expect(getStarted).ToHaveAttributeAsync("href", "/docs/intro");
-
-// Click the get started link.
-await getStarted.ClickAsync();
-
-// Expects the URL to contain intro.
-await Expect(Page).ToHaveURLAsync(new Regex(".*intro"));
-```
-:::
-
-## Limitaties TestServer
-
-<span class="fragment">WebApplicationFactory gebruikt TestServer</span>
-
-<span class="fragment">TestServer niet beschikbaar op een port</span>
-
-<span class="fragment">Oplossing: </span><span class="fragment">Kestrel</span>
-
-<span class="fragment">Wel wat hacky code</span>
-
-::: {.fragment}
-```cs
-//WebApplicationFactory will crash if we dont actually return a testserver...
-var testHost = builder.Build();
-
-//Actually configure kestrel
-builder.ConfigureWebHost(p => p.UseKestrel());
-
-_host = builder.Build();
-_host.Start();
-
-var server = _host.Services.GetRequiredService<IServer>();
-var addresses = server.Features.Get<IServerAddressesFeature>();
-ClientOptions.BaseAddress = addresses!.Addresses
-    .Select(p => new Uri(p))
-    .Last();
-
-testHost.Start();
-```
-:::
 
 # Vragen
 
