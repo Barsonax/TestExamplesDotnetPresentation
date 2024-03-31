@@ -14,17 +14,18 @@ highlight-style: monokai
 
 ## In deze presentatie
 
-- Waarom testen?
+- Waarom integratie testen?
+- Waarom is TestExamplesDotnet
 - Wat is TestExamplesDotnet
 - Hoe werkt TestExamplesDotnet
 - Vragen
 
-# Waarom (automatische) testen?
+# Waarom integratie testen?
 
-- Snelle feedback
-- Bugs voorkomen
-- Documentatie
-- Test driven design
+- Test wat de gebruiker echt gebruikt
+- Alle hoeken van je app dekken
+- Vrij kunnen refactoren
+- Design issues vroeg spotten
 
 ## Test driven design
 
@@ -34,13 +35,15 @@ Tests kunnen design issues zichtbaar maken.
 ```cs
 context.Reservations.Add(new Reservation
 {
-    UserName = "", // Does it make sense having to set UserName to a empty string here?
+    // Does it make sense having to set UserName to an empty string here
+    // just to make the test compile?
+    UserName = "",
     UserId = TestUser.NormalUser.Id
 });
 ```
 :::
 
-<span class="fragment">Veel mocks? </span> <span class="fragment">Verkeerde test scope of..</span> <span class="fragment"> issue met de code? </span>
+<span class="fragment">Veel mocks? </span> <span class="fragment">Verkeerde test scope of..</span> <span class="fragment"> issue met de code?</span>
 
 # Waarom TestExamplesDotnet?
 
@@ -58,7 +61,7 @@ context.Reservations.Add(new Reservation
 
 <https://github.com/Barsonax/TestExamplesDotnet>
 
-Een repository met efficiente (integratie) test setups.
+Een repository met efficiente integratie test setups.
 
 <span class="fragment">Geen handmatige setup</span>
 
@@ -76,7 +79,7 @@ Een repository met efficiente (integratie) test setups.
 
 <span class="fragment">Library om docker heen</span>
 
-<span class="fragment">Containers starten en beheren vanuit C#</span>
+<span class="fragment">Containers starten en beheren vanuit C#</span><span class="fragment"> (of een andere taal)</span>
 
 <span class="fragment">Zorgt voor cleanup, ook als je dit zelf vergeet</span>
 
@@ -97,7 +100,7 @@ await container.StartAsync();
 
 <span class="fragment">Gebruikt dezelfde startup code als productie</span>
 
-<span class="fragment">In memory testserver..</span><span class="fragment"> met wat limitaties</span>
+<span class="fragment">In memory testserver</span>
 
 ## Pooling
 
