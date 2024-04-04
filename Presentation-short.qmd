@@ -15,14 +15,14 @@ highlight-style: monokai
 ## In deze presentatie
 
 - Waarom integratie testen?
-- Waarom is TestExamplesDotnet
+- Waarom TestExamplesDotnet
 - Wat is TestExamplesDotnet
 - Hoe werkt TestExamplesDotnet
 - Vragen
 
 # Waarom integratie testen?
 
-- Test wat de gebruiker echt gebruikt
+- Test wat de gebruiker gebruikt
 - Alle hoeken van je app dekken
 - Vrij kunnen refactoren
 - Design issues vroeg spotten
@@ -131,7 +131,3 @@ await container.StartAsync();
 ![](media/2000testsin10sec.gif)
 
 # Vragen
-
----
-
-<https://github.com/Barsonax/TestExamplesDotnetPresentation>

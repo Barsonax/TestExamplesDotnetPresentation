@@ -14,14 +14,15 @@ highlight-style: monokai
 
 ## In deze presentatie
 
-- Waarom testen?
+- Waarom integratie testen
+- Waarom TestExamplesDotnet
 - Wat is TestExamplesDotnet
 - Hoe werkt TestExamplesDotnet
 - Vragen
 
 # Waarom integratie testen?
 
-- Test wat de gebruiker echt gebruikt
+- Test wat de gebruiker gebruikt
 - Alle hoeken van je app dekken
 - Vrij kunnen refactoren
 - Design issues vroeg spotten
@@ -226,7 +227,3 @@ testHost.Start();
 :::
 
 # Vragen
-
----
-
-<https://github.com/Barsonax/TestExamplesDotnetPresentation>
