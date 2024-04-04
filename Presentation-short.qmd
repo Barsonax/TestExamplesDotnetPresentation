@@ -2,7 +2,7 @@
 transition: "slide"
 highlightTheme: "vs2015"
 slideNumber: true
-title: "Rock your tests!"
+title: "TestExamples Dotnet"
 css : "my-theme.css"
 format: revealjs
 footer: <https://github.com/Barsonax/TestExamplesDotnetPresentation>
